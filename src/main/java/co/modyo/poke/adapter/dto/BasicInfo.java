@@ -4,6 +4,7 @@ import co.modyo.poke.adapter.dto.info.Abilities;
 import co.modyo.poke.adapter.dto.info.Sprites;
 import co.modyo.poke.adapter.dto.info.Stats;
 import co.modyo.poke.adapter.dto.info.Types;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 

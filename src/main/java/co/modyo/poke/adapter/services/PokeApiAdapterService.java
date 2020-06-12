@@ -10,7 +10,7 @@ import co.modyo.poke.adapter.dto.SpeciesInfo;
  * @author Nicolas Ordoñez Chala
  * @since 1.0.0
  */
-public interface PokeApiAdapter {
+public interface PokeApiAdapterService {
 
     /**
      * Get number of pokemon available in the pokemon API

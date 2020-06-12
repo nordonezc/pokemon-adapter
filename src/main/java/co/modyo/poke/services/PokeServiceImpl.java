@@ -1,33 +1,26 @@
 package co.modyo.poke.services;
 
-import co.modyo.poke.adapter.services.PokeApiAdapter;
+import co.modyo.poke.adapter.services.PokeApiAdapterService;
 import co.modyo.poke.dto.Evolution;
 import co.modyo.poke.dto.Pokemon;
 import co.modyo.poke.adapter.dto.BasicInfo;
 import co.modyo.poke.adapter.dto.EvolutionDetail;
-import co.modyo.poke.adapter.dto.PokemonList;
 import co.modyo.poke.adapter.dto.SpeciesInfo;
 import co.modyo.poke.mapper.EvolutionInfoMapper;
 import co.modyo.poke.mapper.PokemonMapper;
-import io.vavr.control.Try;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.Caching;
-import org.springframework.http.HttpMethod;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
 import java.util.Objects;
 
-import static co.modyo.poke.utils.HttpUtils.setInputEntity;
-import static javax.management.timer.Timer.ONE_DAY;
 import static javax.management.timer.Timer.ONE_WEEK;
 
 /**
@@ -38,14 +31,14 @@ import static javax.management.timer.Timer.ONE_WEEK;
  */
 @Service
 @RequiredArgsConstructor
-public class PokeApiServiceImpl implements PokeService {
+public class PokeServiceImpl implements PokeService {
 
     /**
      * Consume adapter to bring the pokemon information
      */
-    public final PokeApiAdapter apiAdapter;
+    public final PokeApiAdapterService apiAdapter;
 
-    private final Logger logger = LoggerFactory.getLogger(PokeApiServiceImpl.class);
+    private final Logger logger = LoggerFactory.getLogger(PokeServiceImpl.class);
 
     /**
      * {@inheritDoc}
@@ -73,13 +66,22 @@ public class PokeApiServiceImpl implements PokeService {
     )
     public Pokemon getPokemonInfo(Integer id) {
 
+        logger.info("Init consult basic info of the pokemon with {}", id);
         BasicInfo basicInfo = apiAdapter.getBasicInfo(id);
-        SpeciesInfo speciesInfo = apiAdapter.getSpeciesInfo(id);
+        logger.info("The given {} return valid answer: {}", id, basicInfo != null);
 
-        return PokemonMapper.map(
+        logger.info("Init species info of the pokemon with {}", id);
+        SpeciesInfo speciesInfo = apiAdapter.getSpeciesInfo(id);
+        logger.info("The given {} return valid answer: {}", id, speciesInfo != null);
+
+        logger.info("Init map api response to info needed with {}", id);
+        Pokemon pokemon = PokemonMapper.map(
                 Objects.requireNonNull(basicInfo),
                 Objects.requireNonNull(speciesInfo)
         );
+        logger.info("The given {} return valid answer: {}", id, pokemon != null);
+
+        return pokemon;
     }
 
     /**
@@ -91,17 +93,27 @@ public class PokeApiServiceImpl implements PokeService {
     @CachePut(value = "evolutions", condition = "#id<50")
     public List<Evolution> getEvolutionInfo(Integer id) {
 
+        logger.info("Init consult evolution detail for the id {}", id);
         EvolutionDetail adapterResponse = apiAdapter.getEvolutionDetail(id);
+        logger.info("The given {} return valid answer for consult evolution detail: {}",
+                id,
+                adapterResponse != null);
 
-        return EvolutionInfoMapper.map(
+        logger.info("Init map the response of evolution detail for the evolution {}", id);
+        List<Evolution> evolutionList = EvolutionInfoMapper.map(
                 Objects.requireNonNull(adapterResponse)
         );
+        logger.info("The evolution id {} give a list with valid size: {}",
+                id,
+                evolutionList.isEmpty());
+
+        return evolutionList;
     }
 
     /**
      * Clear the count cache every month, because the amount of pokemon is not usual to change
      */
-    @Scheduled(fixedDelay = ONE_WEEK*4)
+    @Scheduled(fixedDelay = ONE_WEEK * 4)
     @CacheEvict("count")
     public void clearCountCache() {
 

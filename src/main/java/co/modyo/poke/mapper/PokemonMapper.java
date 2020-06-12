@@ -95,7 +95,7 @@ public class PokemonMapper {
 
         LinkedID linkedID = new LinkedID(id);
         Link evolutionLink = isPokemonRelation ?
-                linkTo(methodOn(PokeApiController.class).getPokemonList(id)).withRel("pokemon") :
+                linkTo(methodOn(PokeApiController.class).getPokemon(id)).withRel("pokemon"):
                 linkTo(methodOn(PokeApiController.class).getEvolution(id)).withRel("evolution");
 
         linkedID.add(evolutionLink);

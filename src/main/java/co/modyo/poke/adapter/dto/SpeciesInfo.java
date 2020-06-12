@@ -2,6 +2,7 @@ package co.modyo.poke.adapter.dto;
 
 import co.modyo.poke.adapter.dto.description.FlavorTextEntries;
 import co.modyo.poke.adapter.dto.evolution.EvolutionChain;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 

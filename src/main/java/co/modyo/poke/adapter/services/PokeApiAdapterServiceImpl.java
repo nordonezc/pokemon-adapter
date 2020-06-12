@@ -4,8 +4,8 @@ import co.modyo.poke.adapter.dto.BasicInfo;
 import co.modyo.poke.adapter.dto.EvolutionDetail;
 import co.modyo.poke.adapter.dto.PokemonList;
 import co.modyo.poke.adapter.dto.SpeciesInfo;
-import co.modyo.poke.services.PokeApiServiceImpl;
 import io.vavr.control.Try;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,19 +22,30 @@ import static co.modyo.poke.utils.HttpUtils.setInputEntity;
  * @since 1.0.0
  */
 @Service
-public class PokeApiAdapterImpl implements PokeApiAdapter {
+@RequiredArgsConstructor
+public class PokeApiAdapterServiceImpl implements PokeApiAdapterService {
 
 
+    /**
+     * URL of the pokemon api
+     */
     @Value("${poke.api.url}")
     private String urlPokeAPI;
 
-    private final RestTemplate restTemplate = new RestTemplate();
-    private final Logger logger = LoggerFactory.getLogger(PokeApiAdapterImpl.class);
+    /**
+     * Use to consume external service
+     */
+    private final RestTemplate restTemplate;
+
+    /**
+     * Use to log the transactions
+     */
+    private final Logger logger = LoggerFactory.getLogger(PokeApiAdapterServiceImpl.class);
 
     /**
      * {@inheritDoc}
      *
-     * @see PokeApiAdapter#countPokemon()
+     * @see PokeApiAdapterService#countPokemon()
      */
     @Override
     public Integer countPokemon() {
@@ -53,7 +64,7 @@ public class PokeApiAdapterImpl implements PokeApiAdapter {
     /**
      * {@inheritDoc}
      *
-     * @see PokeApiAdapter#getSpeciesInfo(Integer)
+     * @see PokeApiAdapterService#getSpeciesInfo(Integer)
      */
     @Override
     public SpeciesInfo getSpeciesInfo(Integer id) {
@@ -71,7 +82,7 @@ public class PokeApiAdapterImpl implements PokeApiAdapter {
     /**
      * {@inheritDoc}
      *
-     * @see PokeApiAdapter#getBasicInfo(Integer)
+     * @see PokeApiAdapterService#getBasicInfo(Integer)
      */
     public BasicInfo getBasicInfo(Integer id) {
 
@@ -88,7 +99,7 @@ public class PokeApiAdapterImpl implements PokeApiAdapter {
     /**
      * {@inheritDoc}
      *
-     * @see PokeApiAdapter#getEvolutionDetail(Integer)
+     * @see PokeApiAdapterService#getEvolutionDetail(Integer)
      */
     @Override
     public EvolutionDetail getEvolutionDetail(Integer id) {
