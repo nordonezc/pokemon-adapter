@@ -1,7 +1,7 @@
 package co.modyo.poke.mapper;
 
-import co.modyo.poke.dto.pokeapi.info.Type;
-import co.modyo.poke.dto.pokeapi.info.Types;
+import co.modyo.poke.adapter.dto.info.Type;
+import co.modyo.poke.adapter.dto.info.Types;
 
 import java.util.List;
 import java.util.stream.Collectors;

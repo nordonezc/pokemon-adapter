@@ -1,7 +1,7 @@
 package co.modyo.poke.mapper;
 
 import co.modyo.poke.dto.Stat;
-import co.modyo.poke.dto.pokeapi.info.Stats;
+import co.modyo.poke.adapter.dto.info.Stats;
 
 import java.util.List;
 
@@ -17,7 +17,7 @@ public class StatMapper {
 
     /**
      * Transform the {@link List} of {@link Stats} into a {@link List}
-     * of {@link co.modyo.poke.dto.Stat} with the name of each {@link co.modyo.poke.dto.pokeapi.info.Stat}
+     * of {@link co.modyo.poke.dto.Stat} with the name of each {@link co.modyo.poke.adapter.dto.info.Stat}
      * with its respective base value
      *
      * @param abilitiesList The {@link List} of {@link Stats} given by the pokemon API

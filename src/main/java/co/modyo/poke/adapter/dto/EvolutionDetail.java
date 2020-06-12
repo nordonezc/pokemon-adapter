@@ -1,6 +1,6 @@
-package co.modyo.poke.dto.pokeapi;
+package co.modyo.poke.adapter.dto;
 
-import co.modyo.poke.dto.pokeapi.evolution.Chain;
+import co.modyo.poke.adapter.dto.evolution.Chain;
 import lombok.Data;
 
 /**

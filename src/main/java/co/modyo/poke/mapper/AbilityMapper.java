@@ -1,7 +1,7 @@
 package co.modyo.poke.mapper;
 
-import co.modyo.poke.dto.pokeapi.info.Abilities;
-import co.modyo.poke.dto.pokeapi.info.Ability;
+import co.modyo.poke.adapter.dto.info.Abilities;
+import co.modyo.poke.adapter.dto.info.Ability;
 
 import java.util.List;
 

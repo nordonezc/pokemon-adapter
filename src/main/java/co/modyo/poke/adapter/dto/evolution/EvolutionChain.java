@@ -1,4 +1,4 @@
-package co.modyo.poke.dto.pokeapi.evolution;
+package co.modyo.poke.adapter.dto.evolution;
 
 import lombok.Data;
 

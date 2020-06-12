@@ -2,8 +2,8 @@ package co.modyo.poke.mapper;
 
 import co.modyo.poke.dto.Evolution;
 import co.modyo.poke.dto.EvolutionInfo;
-import co.modyo.poke.dto.pokeapi.EvolutionDetail;
-import co.modyo.poke.dto.pokeapi.evolution.Chain;
+import co.modyo.poke.adapter.dto.EvolutionDetail;
+import co.modyo.poke.adapter.dto.evolution.Chain;
 
 import java.util.ArrayList;
 import java.util.List;

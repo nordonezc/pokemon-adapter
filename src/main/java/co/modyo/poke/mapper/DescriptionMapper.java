@@ -1,6 +1,6 @@
 package co.modyo.poke.mapper;
 
-import co.modyo.poke.dto.pokeapi.description.FlavorTextEntries;
+import co.modyo.poke.adapter.dto.description.FlavorTextEntries;
 
 import java.util.List;
 
@@ -19,10 +19,10 @@ public class DescriptionMapper {
 
     /**
      * Find the first element of the {@link List} of {@link FlavorTextEntries} which
-     * has the {@link co.modyo.poke.dto.pokeapi.description.Language} equal to language given in the parameter
+     * has the {@link co.modyo.poke.adapter.dto.description.Language} equal to language given in the parameter
      *
      * @param flavorTextEntries - The {@link List} of {@link FlavorTextEntries} given by the pokemon API
-     * @param language          - The {@link co.modyo.poke.dto.pokeapi.description.Language} that is wanted to be return
+     * @param language          - The {@link co.modyo.poke.adapter.dto.description.Language} that is wanted to be return
      * @return The description of the pokemon
      */
     protected static String map(List<FlavorTextEntries> flavorTextEntries, String language) {

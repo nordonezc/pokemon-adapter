@@ -3,8 +3,8 @@ package co.modyo.poke.mapper;
 import co.modyo.poke.controller.PokeApiController;
 import co.modyo.poke.dto.LinkedID;
 import co.modyo.poke.dto.Pokemon;
-import co.modyo.poke.dto.pokeapi.BasicInfo;
-import co.modyo.poke.dto.pokeapi.SpeciesInfo;
+import co.modyo.poke.adapter.dto.BasicInfo;
+import co.modyo.poke.adapter.dto.SpeciesInfo;
 import org.springframework.hateoas.Link;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;

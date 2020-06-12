@@ -1,7 +1,7 @@
 package co.modyo.poke.mapper;
 
 import co.modyo.poke.dto.LinkedID;
-import co.modyo.poke.dto.pokeapi.evolution.EvolutionChain;
+import co.modyo.poke.adapter.dto.evolution.EvolutionChain;
 
 import static co.modyo.poke.mapper.PokemonMapper.getLinkedIDFromURL;
 

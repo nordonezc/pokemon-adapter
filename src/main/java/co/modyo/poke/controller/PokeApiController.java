@@ -1,10 +1,11 @@
 package co.modyo.poke.controller;
 
 import co.modyo.poke.dto.Evolution;
-import co.modyo.poke.dto.EvolutionInfo;
 import co.modyo.poke.dto.Pokemon;
 import co.modyo.poke.services.PokeService;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,11 +24,24 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class PokeApiController {
 
+
     /**
      * Service to handle the consult of pokemon
      * @see PokeService
      */
     private final PokeService pokeService;
+
+    private final Logger logger = LoggerFactory.getLogger(PokeApiController.class);
+
+    /**
+     * Get amount of pokemon available to consult
+     * @return Instance of {@link Pokemon}
+     */
+    @GetMapping("/pokemon")
+    public ResponseEntity<Integer> getPokemonList(){
+        logger.info("Init count pokemon");
+        return ResponseEntity.ok(pokeService.countPokemon());
+    }
 
     /**
      * Get the pokemon basic information by ID
@@ -35,14 +49,14 @@ public class PokeApiController {
      * @return Instance of {@link Pokemon}
      */
     @GetMapping("/pokemon/{id}")
-    public ResponseEntity<Object> getPokemonList(@PathVariable("id") Integer pokemonID){
+    public ResponseEntity<Pokemon> getPokemonList(@PathVariable("id") Integer pokemonID){
         return ResponseEntity.ok(pokeService.getPokemonInfo(pokemonID));
     }
 
     /**
      * Get the pokemon basic information by ID
      * @param evolutionID - The ID pokemon to be search
-     * @return Instance of {@link Pokemon}
+     * @return Instance of {@link List} of {@link Evolution}
      */
     @GetMapping("/evolution/{id}")
     public ResponseEntity<List<Evolution>> getEvolution(@PathVariable("id") Integer evolutionID){

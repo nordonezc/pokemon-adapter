@@ -1,7 +1,7 @@
-package co.modyo.poke.dto.pokeapi;
+package co.modyo.poke.adapter.dto;
 
-import co.modyo.poke.dto.pokeapi.description.FlavorTextEntries;
-import co.modyo.poke.dto.pokeapi.evolution.EvolutionChain;
+import co.modyo.poke.adapter.dto.description.FlavorTextEntries;
+import co.modyo.poke.adapter.dto.evolution.EvolutionChain;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 

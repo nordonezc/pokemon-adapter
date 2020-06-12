@@ -15,6 +15,7 @@ public class CacheConfig {
 
     /**
      * Configuration of the cache
+     *
      * @return Cache manager with t
      */
     @Bean
@@ -22,7 +23,8 @@ public class CacheConfig {
         SimpleCacheManager cacheManager = new SimpleCacheManager();
         cacheManager.setCaches(Arrays.asList(
                 new ConcurrentMapCache("pokemon-info"),
-                new ConcurrentMapCache("evolutions")));
+                new ConcurrentMapCache("evolutions"),
+                new ConcurrentMapCache("count")));
         return cacheManager;
     }
 

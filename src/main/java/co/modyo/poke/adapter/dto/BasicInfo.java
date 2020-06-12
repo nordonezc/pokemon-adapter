@@ -1,9 +1,9 @@
-package co.modyo.poke.dto.pokeapi;
+package co.modyo.poke.adapter.dto;
 
-import co.modyo.poke.dto.pokeapi.info.Abilities;
-import co.modyo.poke.dto.pokeapi.info.Sprites;
-import co.modyo.poke.dto.pokeapi.info.Stats;
-import co.modyo.poke.dto.pokeapi.info.Types;
+import co.modyo.poke.adapter.dto.info.Abilities;
+import co.modyo.poke.adapter.dto.info.Sprites;
+import co.modyo.poke.adapter.dto.info.Stats;
+import co.modyo.poke.adapter.dto.info.Types;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 

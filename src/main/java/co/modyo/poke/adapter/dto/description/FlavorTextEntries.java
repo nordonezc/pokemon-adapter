@@ -1,4 +1,4 @@
-package co.modyo.poke.dto.pokeapi.description;
+package co.modyo.poke.adapter.dto.description;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;

@@ -1,9 +1,7 @@
 package co.modyo.poke.services;
 
 import co.modyo.poke.dto.Evolution;
-import co.modyo.poke.dto.EvolutionInfo;
 import co.modyo.poke.dto.Pokemon;
-import co.modyo.poke.dto.pokeapi.BasicInfo;
 
 import java.util.List;
 
@@ -16,12 +14,19 @@ import java.util.List;
 public interface PokeService {
 
     /**
+     * It quantity of pokemon available to consult
+     *
+     * @return The amount of pokemon
+     */
+    Integer countPokemon();
+
+    /**
      * It will return the list of all pokemon
      *
      * @param id The id of the pokemon in the pokemon api
-     * @return The {@link BasicInfo} with its properties
+     * @return The {@link Pokemon} with its properties
      */
-    Object getPokemonInfo(Integer id);
+    Pokemon getPokemonInfo(Integer id);
 
     /**
      * It will return the complete info of the pokemon evolution

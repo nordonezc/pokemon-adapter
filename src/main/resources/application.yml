@@ -1,2 +1,2 @@
-server.port: 8180
+server.port: 8080
 poke.api.url: "https://pokeapi.co/api/v2/"
