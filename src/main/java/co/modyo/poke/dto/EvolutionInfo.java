@@ -21,8 +21,8 @@ public class EvolutionInfo {
     private String name;
 
     /**
-     * ID of the {@link Pokemon} that is involved in the evolution process
+     * {@link LinkedID} of the {@link Pokemon} that is involved in the evolution process
      */
-    private Integer id;
+    private LinkedID pokemonID;
 
 }

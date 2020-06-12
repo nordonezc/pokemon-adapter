@@ -53,7 +53,7 @@ public class Pokemon {
     /**
      * The ID of evolution chain for the pokemon
      */
-    private Integer evolutionChain;
+    private LinkedID evolutionID;
 
     /**
      * The basic description of the pokemon

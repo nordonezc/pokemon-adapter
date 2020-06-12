@@ -1,9 +1,9 @@
 package co.modyo.poke.mapper;
 
-import co.modyo.poke.dto.pokeapi.SpeciesInfo;
+import co.modyo.poke.dto.LinkedID;
 import co.modyo.poke.dto.pokeapi.evolution.EvolutionChain;
 
-import static co.modyo.poke.mapper.PokemonMapper.getIDFromURL;
+import static co.modyo.poke.mapper.PokemonMapper.getLinkedIDFromURL;
 
 /**
  * Use to transform the type given chain evolution to the name of the
@@ -14,15 +14,15 @@ import static co.modyo.poke.mapper.PokemonMapper.getIDFromURL;
 public class EvolutionChainMapper {
 
     /**
-     * Transform the {@link SpeciesInfo} into a integer with the number of the
-     * evolution chain. 
-     * @see PokemonMapper#getIDFromURL(String)
+     * Transform the {@link EvolutionChain} into a integer with the number of the
+     * evolution chain.
      *
-     * @param evolutionChain - The {@link Characteristics} given by the pokemon API+
+     * @param evolutionChain - The {@link EvolutionChain} given by the pokemon API+
      * @return The number of the evolution chain
+     * @see PokemonMapper#getLinkedIDFromURL(String, boolean)
      */
-    protected static Integer map(EvolutionChain evolutionChain) {
+    protected static LinkedID map(EvolutionChain evolutionChain) {
 
-        return getIDFromURL(evolutionChain.getUrl());
+        return getLinkedIDFromURL(evolutionChain.getUrl(), false);
     }
 }
