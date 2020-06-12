@@ -3,6 +3,7 @@ package co.modyo.poke.controller;
 import co.modyo.poke.dto.Evolution;
 import co.modyo.poke.dto.Pokemon;
 import co.modyo.poke.services.PokeService;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.hateoas.Link;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +29,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
  */
 @RestController
 @CrossOrigin(origins = "*")
+@RequiredArgsConstructor
 public class PokeApiController {
 
 
@@ -37,31 +40,8 @@ public class PokeApiController {
      */
     private final PokeService pokeService;
 
-    /**
-     * Create the home reference for all the methods
-     */
-    private final List<Link> availableOperations;
-
-
     private final Logger logger = LoggerFactory.getLogger(PokeApiController.class);
 
-    /**
-     * Constructor which initialize the methods that it has
-     *
-     * @param pokeService - Required by constructor
-     */
-    public PokeApiController(PokeService pokeService) throws NoSuchMethodException {
-        this.pokeService = pokeService;
-
-        availableOperations = new ArrayList<>();
-        Method getEvolution = PokeApiController.class.getMethod("getEvolution", Integer.class);
-        availableOperations.add(linkTo(getEvolution, "id").withRel("first"));
-
-        Method getPokemon = PokeApiController.class.getMethod("getPokemon", Integer.class);
-        availableOperations.add(linkTo(getPokemon, "id").withRel("first"));
-
-        availableOperations.add(linkTo(methodOn(PokeApiController.class).countPokemon()).withRel("first"));
-    }
 
     /**
      * Get amount of pokemon available to consult
@@ -105,7 +85,18 @@ public class PokeApiController {
      */
     @GetMapping("/")
     public List<Link> home() throws NoSuchMethodException {
+        List<Link> availableOperations = new ArrayList<>();
+        availableOperations.add(linkTo(
+                methodOn(PokeApiController.class)
+                        .getEvolution(null)).withRel("first"));
 
+        availableOperations.add(linkTo(
+                methodOn(PokeApiController.class)
+                        .getPokemon(null)).withRel("first"));
+
+        availableOperations.add(linkTo(
+                methodOn(PokeApiController.class)
+                        .countPokemon()).withRel("first"));
         return availableOperations;
     }
 
