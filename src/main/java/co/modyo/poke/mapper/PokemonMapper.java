@@ -7,6 +7,7 @@ import co.modyo.poke.adapter.dto.BasicInfo;
 import co.modyo.poke.adapter.dto.SpeciesInfo;
 import org.springframework.hateoas.Link;
 
+import static co.modyo.poke.utils.HttpUtils.toSentenceCase;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
@@ -38,7 +39,7 @@ public class PokemonMapper {
                 .baseExperience(basicInfo.getBaseExperience())
                 .height(basicInfo.getHeight())
                 .weight(basicInfo.getWeight())
-                .name(basicInfo.getName())
+                .name(toSentenceCase(basicInfo.getName()))
                 .build();
     }
 

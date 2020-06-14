@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static co.modyo.poke.mapper.PokemonMapper.*;
+import static co.modyo.poke.utils.HttpUtils.toSentenceCase;
 
 /**
  * Use to transform the type given chain evolution to the name of the
@@ -59,7 +60,7 @@ public class EvolutionInfoMapper {
     private static EvolutionInfo getEvolutionInfo(Chain evolvesTo) {
 
         return EvolutionInfo.builder()
-                .name(evolvesTo.getSpecies().getName())
+                .name(toSentenceCase(evolvesTo.getSpecies().getName()))
                 .pokemonID(
                         getLinkedIDFromURL(evolvesTo.getSpecies().getUrl(), true))
                 .build();
