@@ -25,4 +25,18 @@ public class HttpUtils {
         httpHeaders.add(HttpHeaders.USER_AGENT, "pokedex");
         return new HttpEntity(input, httpHeaders);
     }
+
+    /**
+     * Transform the given input into a sentence case. Take the first letter
+     * with {@link String#substring(int, int)} with 0 and 1 respectively
+     * apply {@link String#toUpperCase()} and finally concatenate it
+     * with {@link String#substring(int)} with 1.
+     *
+     * @param input - Pokemon's name or ability
+     * @return Input in sentence case.  e.g. house will return House
+     */
+    public static String toSentenceCase(String input) {
+
+        return input.substring(0, 1).toUpperCase() + input.substring(1);
+    }
 }

@@ -5,6 +5,7 @@ import co.modyo.poke.adapter.dto.info.Ability;
 
 import java.util.List;
 
+import static co.modyo.poke.utils.HttpUtils.toSentenceCase;
 import static java.util.stream.Collectors.toList;
 
 /**
@@ -37,6 +38,6 @@ public class AbilityMapper {
      */
     protected static String map(Abilities abilities) {
 
-        return abilities.getAbility().getName();
+        return toSentenceCase(abilities.getAbility().getName());
     }
 }
