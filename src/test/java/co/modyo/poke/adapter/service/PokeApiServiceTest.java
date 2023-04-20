@@ -4,15 +4,11 @@ import co.modyo.poke.adapter.dto.BasicInfo;
 import co.modyo.poke.adapter.dto.EvolutionDetail;
 import co.modyo.poke.adapter.dto.PokemonList;
 import co.modyo.poke.adapter.dto.SpeciesInfo;
-import co.modyo.poke.adapter.dto.evolution.EvolutionChain;
 import co.modyo.poke.adapter.services.PokeApiAdapterServiceImpl;
-import co.modyo.poke.dto.Evolution;
-import co.modyo.poke.dto.Pokemon;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -20,8 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.List;
 
 import static co.modyo.poke.utils.HttpUtils.setInputEntity;
 import static co.modyo.poke.utils.JsonFileUtils.readJsonFile;

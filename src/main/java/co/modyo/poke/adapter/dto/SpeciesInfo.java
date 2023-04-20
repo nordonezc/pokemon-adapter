@@ -2,11 +2,9 @@ package co.modyo.poke.adapter.dto;
 
 import co.modyo.poke.adapter.dto.description.FlavorTextEntries;
 import co.modyo.poke.adapter.dto.evolution.EvolutionChain;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
-
 import java.util.List;
+import lombok.Data;
 
 /**
  * Represent the chain evolution of the pokemon
@@ -17,16 +15,15 @@ import java.util.List;
 @Data
 public class SpeciesInfo {
 
-    /**
-     * Represent in what {@link EvolutionChain} is the pokemon
-     */
-    @JsonProperty("evolution_chain")
-    private EvolutionChain evolutionChain;
+  /**
+   * Represent in what {@link EvolutionChain} is the pokemon
+   */
+  @JsonProperty("evolution_chain")
+  private EvolutionChain evolutionChain;
 
-    /**
-     * {@link List} of {@link FlavorTextEntries} with the description of the pokemon
-     */
-    @JsonProperty("flavor_text_entries")
-    private List<FlavorTextEntries> flavorTextEntries;
-
+  /**
+   * {@link List} of {@link FlavorTextEntries} with the description of the pokemon
+   */
+  @JsonProperty("flavor_text_entries")
+  private List<FlavorTextEntries> flavorTextEntries;
 }

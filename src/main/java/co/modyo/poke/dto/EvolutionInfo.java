@@ -3,8 +3,6 @@ package co.modyo.poke.dto;
 import lombok.Builder;
 import lombok.Data;
 
-import java.util.List;
-
 /**
  * Represent all the {@link Pokemon} involved in the the evolution
  *
@@ -15,14 +13,13 @@ import java.util.List;
 @Builder
 public class EvolutionInfo {
 
-    /**
-     * Name of the {@link Pokemon} that is involved in the evolution process
-     */
-    private String name;
+  /**
+   * Name of the {@link Pokemon} that is involved in the evolution process
+   */
+  private String name;
 
-    /**
-     * {@link LinkedID} of the {@link Pokemon} that is involved in the evolution process
-     */
-    private LinkedID pokemonID;
-
+  /**
+   * {@link LinkedID} of the {@link Pokemon} that is involved in the evolution process
+   */
+  private LinkedID pokemonID;
 }
